@@ -15,8 +15,8 @@ import {
   InvalidAttestationError,
   InvalidBlockError,
 } from "../../../src/slashingProtection";
-import { downloadTests, loadTestCases as newLoadTestCases } from "./downloadTest";
-import { join } from "path";
+import {downloadTests, loadTestCases as newLoadTestCases} from "./downloadTest";
+import {join} from "path";
 
 chai.use(chaiAsPromised);
 
@@ -33,14 +33,19 @@ describe("slashing-protection-interchange-tests", async () => {
     console.error(e);
     process.exit(1);
   });
-  const testCases = newLoadTestCases(`${outputDir}/tests/generated`)
+  const testCases = newLoadTestCases(`${outputDir}/tests/generated`);
   const testCasesOld = loadTestCases();
-  console.log('testCase e.g.: ', testCases.find(a => a.name === "single_validator_multiple_blocks_and_attestations")?.steps[0].interchange)
-  console.log('testCasesOld e.g.: ', testCasesOld.find(a => a.name === "single_validator_multiple_blocks_and_attestations")?.interchange)
+  console.log(
+    "testCase e.g.: ",
+    testCases.find((a) => a.name === "single_validator_multiple_blocks_and_attestations")?.steps[0].interchange
+  );
+  console.log(
+    "testCasesOld e.g.: ",
+    testCasesOld.find((a) => a.name === "single_validator_multiple_blocks_and_attestations")?.interchange
+  );
 
   const dbLocation = "./.__testdb";
   const controller = new LevelDbController({name: dbLocation}, {logger: new WinstonLogger({level: LogLevel.error})});
-
 
   for (const testCase of testCases) {
     describe(testCase.name, async () => {
@@ -51,11 +56,11 @@ describe("slashing-protection-interchange-tests", async () => {
           await controller.start();
           await controller.clear();
         });
-  
+
         // Import
         beforeEach("Import interchange", async () => {
           expect(await controller.keys()).lengthOf(0, "DB is not empty");
-  
+
           const genesisValidatorsRoot = fromHexString(testCase.genesis_validators_root);
           // console.log('step.interchange: ', step.interchange)
           // step.interchange.metadata.interchange_format = "complete"
@@ -67,12 +72,12 @@ describe("slashing-protection-interchange-tests", async () => {
             ).to.not.be.rejectedWith(InterchangeError);
           }
         });
-  
+
         afterEach(async () => {
           await controller.clear();
           await controller.stop();
         });
-  
+
         // Add blocks
         for (const [i, blockRaw] of step.blocks.entries()) {
           it(`Add block ${i}`, async () => {
@@ -90,7 +95,7 @@ describe("slashing-protection-interchange-tests", async () => {
             }
           });
         }
-  
+
         // Add attestations
         for (const [i, attestationRaw] of step.attestations.entries()) {
           it.skip(`Add attestation ${i}`, async () => {

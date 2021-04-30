@@ -37,9 +37,9 @@ export interface ISlashingProtectionInterchangeTest {
         source_epoch: number;
         target_epoch: number;
         signing_root?: string;
-      }[];    
+      }[];
     }
-  ]
+  ];
 }
 
 export function loadTestCases(testsPath: string): ISlashingProtectionInterchangeTest[] {
@@ -47,10 +47,8 @@ export function loadTestCases(testsPath: string): ISlashingProtectionInterchange
   if (files.length === 0) {
     throw Error(`Not tests found in ${testsPath}`);
   }
-  return files.map((file) =>
-    JSON.parse(fs.readFileSync(path.join(testsPath, file), "utf8"))
-  );
-};
+  return files.map((file) => JSON.parse(fs.readFileSync(path.join(testsPath, file), "utf8")));
+}
 
 export async function downloadTests(
   {specVersion, specTestsRepoUrl, outputDir, testsToDownload = defaultTestsToDownload}: IDownloadTestsOptions,
@@ -76,7 +74,9 @@ export async function downloadTests(
 
   await Promise.all(
     testsToDownload.map(async (test) => {
-      const url = `${specTestsRepoUrl ?? defaultSpecTestsRepoUrl}/releases/download/${specVersion}/${test}-${specVersion}.tar.gz`;
+      const url = `${
+        specTestsRepoUrl ?? defaultSpecTestsRepoUrl
+      }/releases/download/${specVersion}/${test}-${specVersion}.tar.gz`;
 
       // download tar
       const {data, headers} = await axios({
