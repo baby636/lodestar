@@ -233,6 +233,7 @@ async function getNearestArchivedState(
   slot: Slot
 ): Promise<CachedBeaconState<allForks.BeaconState>> {
   const states = db.stateArchive.valuesStream({lte: slot, reverse: true});
+  console.log('keys: ', db.stateArchive.keys({lte: slot, reverse: true}))
   const state = (await states[Symbol.asyncIterator]().next()).value as TreeBacked<allForks.BeaconState>;
   return createCachedBeaconState(config, state);
 }
