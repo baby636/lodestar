@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/naming-convention */
 import fs from "fs";
 import path from "path";
 import rimraf from "rimraf";
@@ -28,14 +28,14 @@ export interface ISlashingProtectionInterchangeTest {
       blocks: {
         pubkey: string;
         should_succeed: boolean;
-        slot: number;
+        slot: string;
         signing_root?: string;
       }[];
       attestations: {
         pubkey: string;
         should_succeed: boolean;
-        source_epoch: number;
-        target_epoch: number;
+        source_epoch: string;
+        target_epoch: string;
         signing_root?: string;
       }[];
     }
@@ -47,7 +47,9 @@ export function loadTestCases(testsPath: string): ISlashingProtectionInterchange
   if (files.length === 0) {
     throw Error(`Not tests found in ${testsPath}`);
   }
-  return files.map((file) => JSON.parse(fs.readFileSync(path.join(testsPath, file), "utf8")));
+  return files.map(
+    (file) => JSON.parse(fs.readFileSync(path.join(testsPath, file), "utf8")) as ISlashingProtectionInterchangeTest
+  );
 }
 
 export async function downloadTests(
