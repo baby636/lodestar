@@ -18,7 +18,7 @@ import {join} from "path";
 chai.use(chaiAsPromised);
 
 describe("slashing-protection-interchange-tests", async () => {
-  const outputDir = join(__dirname, "./tests");
+  const outputDir = join(__dirname, "./spi-tests");
   await downloadTests(
     {
       specVersion: "v5.0.0",
