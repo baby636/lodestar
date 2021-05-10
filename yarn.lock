@@ -1166,7 +1166,7 @@
     rlp "^2.2.6"
     strict-event-emitter-types "^2.0.0"
 
-"@chainsafe/persistent-merkle-tree@^0.3.2":
+"@chainsafe/persistent-merkle-tree@^0.3.0", "@chainsafe/persistent-merkle-tree@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@chainsafe/persistent-merkle-tree/-/persistent-merkle-tree-0.3.2.tgz#ec2d0c71d84e280c758ef5d828b05a8634df649e"
   integrity sha512-HppxFrRxqM4ureVuZ1xf1deuZcbERRtK1X3i87sZgPwr+nT9NBoM+BaFbwBVXPt5amtJyQxKyENY4idltoX4Mg==
@@ -1195,7 +1195,7 @@
     fast-crc32c "^1.0.1"
     snappy "6.3.4"
 
-"@chainsafe/ssz@^0.8.4":
+"@chainsafe/ssz@^0.8.2", "@chainsafe/ssz@^0.8.4":
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/@chainsafe/ssz/-/ssz-0.8.4.tgz#498c8f063c81f4156f3738af60102875e53ee35b"
   integrity sha512-IISbZQjf5QiFcQ+yBzStwANaBR39Dq9RCp46RJdCDrn2UqS8izBjesz3M5CKpnwiD7n+yDx7IYdIALfqzbxyGQ==
@@ -6861,9 +6861,9 @@ homedir-polyfill@^1.0.1:
     parse-passwd "^1.0.0"
 
 hosted-git-info@^2.1.4, hosted-git-info@^2.7.1:
-  version "2.8.8"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
-  integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 html-escaper@^2.0.0:
   version "2.0.2"
