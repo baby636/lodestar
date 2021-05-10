@@ -12,13 +12,14 @@ import {
   InvalidAttestationError,
   InvalidBlockError,
 } from "../../../src/slashingProtection";
-import {downloadTests, loadTestCases as newLoadTestCases} from "./downloadTest";
+import {downloadTests, loadTestCases} from "./index.test";
 import {join} from "path";
 
 chai.use(chaiAsPromised);
 
 describe("slashing-protection-interchange-tests", async () => {
   const outputDir = join(__dirname, "./spi-tests");
+
   await downloadTests(
     {
       specVersion: "v5.0.0",
@@ -29,7 +30,8 @@ describe("slashing-protection-interchange-tests", async () => {
     console.error(e);
     process.exit(1);
   });
-  const testCases = newLoadTestCases(`${outputDir}/tests/generated`);
+
+  const testCases = loadTestCases(`${outputDir}/tests/generated`);
   const dbLocation = "./.__testdb";
   const controller = new LevelDbController({name: dbLocation}, {logger: new WinstonLogger({level: LogLevel.error})});
 
@@ -64,6 +66,8 @@ describe("slashing-protection-interchange-tests", async () => {
         // Add blocks
         for (const [i, blockRaw] of step.blocks.entries()) {
           it(`Add block ${i}`, async () => {
+            console.log("i: ", "i");
+
             const pubkey = fromHexString(blockRaw.pubkey);
             const block: phase0.SlashingProtectionBlock = {
               slot: parseInt(blockRaw.slot),
