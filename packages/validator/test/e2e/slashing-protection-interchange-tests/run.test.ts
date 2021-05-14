@@ -12,7 +12,7 @@ import {
   InvalidAttestationError,
   InvalidBlockError,
 } from "../../../src/slashingProtection";
-import {downloadTests, loadTestCases} from "./index.test";
+import {downloadTests, loadTestCases} from "./downloadTests";
 import {join} from "path";
 
 chai.use(chaiAsPromised);
