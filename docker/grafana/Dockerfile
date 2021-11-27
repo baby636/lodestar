@@ -1,4 +1,4 @@
-FROM grafana/grafana:latest
+FROM grafana/grafana:8.3.0-beta2
 
 COPY provisioning/ /etc/grafana/provisioning/
 COPY provisioning/dashboards/*.json /provisioning/dashboards/
