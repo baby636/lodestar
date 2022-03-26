@@ -27,7 +27,9 @@
     "cli": "node --trace-deprecation --max-old-space-size=8192 ./packages/cli/bin/lodestar",
     "publish": "lerna publish from-package --yes --no-verify-access",
     "release": "lerna version --no-push --sign-git-commit",
-    "postrelease": "git tag -d $(git describe --abbrev=0)"
+    "postrelease": "git tag -d $(git describe --abbrev=0)",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
@@ -71,5 +73,8 @@
     "typescript": "^4.2.0",
     "webpack": "^5.36.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
