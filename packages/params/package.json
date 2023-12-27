@@ -47,7 +47,7 @@
   "dependencies": {
     "@chainsafe/ssz": "^0.8.4",
     "@types/js-yaml": "^3.12.2",
-    "axios": "^0.21.0",
+    "axios": "^1.6.3",
     "js-yaml": "^3.13.1"
   }
 }
