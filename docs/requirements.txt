@@ -4,3 +4,4 @@ Pygments>=2.4
 markdown>=3.2
 pymdown-extensions>=7.0
 mkdocs-mermaid2-plugin>=0.4
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
